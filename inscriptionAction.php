@@ -12,7 +12,7 @@
     $pseudo = validate_donnees($_POST['pseudoInscription']);
     $email = validate_donnees($_POST['emailInscription']);
     $mdp = validate_donnees($_POST['mdpInscription']);
-
+    
     if(
     isset($pseudo) 
     && isset($email) 
@@ -38,8 +38,10 @@
         $userRequette = $db->prepare($requete);
         $userRequette -> execute();
         $usersSaved = $userRequette -> fetchAll();
-
+        var_dump("hello");
+        echo "1";
         foreach($usersSaved as $userSaved):
+            echo "2";
             if($userSaved['pseudo'] == $pseudo):
                 $messageErreurPseudo = $pseudo;
                 header('Location: index.php?ErreurPseudo=' . $messageErreurPseudo);
@@ -65,6 +67,8 @@
         ]);
         header('Location: index.php?Validité=' . $pseudo);
         exit;
+    } else {
+        echo "erreur";
     }
 
 

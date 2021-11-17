@@ -9,7 +9,7 @@ function validate_donnees($donnee)
 }
 
 
-if (isset($_GET['ErreurPseudo']) || isset($_GET['ErreurEmail'])) {
+if (isset($_GET['ErreurPseudo']) || isset($_GET['ErreurEmail']) || isset($_GET['Validité'])) {
 
 ?>
     <div class="wrapper-msgErreur">
@@ -34,10 +34,11 @@ if (isset($_GET['ErreurPseudo']) || isset($_GET['ErreurEmail'])) {
             <?php endif; ?>
             <?php 
             //------- Message Validité
+            
             if (!empty($_GET['Validité'])) :
                 $validite = validate_donnees($_GET['Validité']);
                 if (!empty($validite)) {
-                    $text = $validite . ' votre inscription à bien été prise en compte.';
+                    $text = '<span>' . $validite . '</span> votre inscription à bien été prise en compte.';
                 }
             ?>
                 <h2>Inscrit :</h2>
