@@ -1,4 +1,6 @@
-<?php session_start(); ?>
+<?php session_start();
+  
+?>
 
 
 <!DOCTYPE html>
@@ -21,7 +23,6 @@
     </div>
 
     <?php include_once('pseudoEmailExistant.php'); ?>
-
     <main>
         <div class="wrapper">
             <h2>Lorem ipsum dolor sit amet</h2>
@@ -81,9 +82,16 @@
     <?php include_once('footer.php'); ?>
 
 
+    <?php
+    if(empty($_SESSION['pseudo'])):
+    ?>
+    <script src="./js/connexion.js"></script>
+    <?php
+    endif;
+    ?>
 
-
-    <script src="app.js"></script>
+    <script src="./js/header.js"></script>
+    <script src="./js/app.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>

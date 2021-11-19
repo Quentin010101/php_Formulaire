@@ -1,0 +1,285 @@
+main{
+    display: flex;
+    flex-direction: column;
+}
+
+.produit{
+    display: flex;
+    padding: 40px 80px;
+
+}
+.produit-main{
+    position: relative;
+    height: 400px;
+    aspect-ratio: 1/1;
+    background: rgba(255, 99, 71,0.95);
+    box-shadow: 0.2em 0.2em 0.2em rgba(0,0,0,0.6);
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.produit-main ion-icon{
+    font-size: 5em;
+    color: white;
+    transition: all 0.6s ease-out;
+}
+.produit-main:hover ion-icon{
+    transform: scale(1.4);
+    transition: all 0.6s ease-out;
+}
+.produit-main:hover::before{
+    top: -3%;
+    left: -6%;
+    transition: all 0.8s ease-out;
+}
+.produit-main:hover::after{
+    bottom: -3%;
+    right: -6%;
+    transition: all 0.8s ease-out;
+}
+.produit-main::before{
+    position: absolute;
+    content: '';
+    top: 0%;
+    left: 0%;
+    border: solid 200px crimson;
+    border-bottom: solid 200px transparent;
+    border-right: solid 200px transparent;
+    border-top: none;
+    transition: all 0.8s ease-out;
+}
+.produit-main::after{
+    position: absolute;
+    content: '';
+    bottom: 0%;
+    right: 0%;
+    border: solid 200px crimson;
+    border-top: solid 200px transparent;
+    border-left: solid 200px transparent;
+    border-right: none;
+    z-index: -1;
+    transition: all 0.8s ease-out;
+}
+.produit-text{
+    position: relative;
+    margin-left: 40px;
+    min-height: 400px;
+    background: rgba(255,255,255,0.9);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 0.2em 0.2em 0.2em rgba(0,0,0,0.4);
+    padding: 0 40px;
+}
+.produit-text::before{
+    position: absolute;
+    content: '';
+    bottom: 5%;
+    right: -5%;
+    width: 5vw;
+    aspect-ratio: 1/1;
+    background: linear-gradient(45deg, tomato, crimson);
+    z-index: -1;
+    animation: rot 20s infinite;
+}
+@keyframes rot{
+    0%{
+        transform: rotateZ(0deg);
+    }
+    50%{
+        transform: rotateZ(135deg);
+    }
+    100%{
+        transform: rotateZ(0deg);
+    }
+}
+.produit-text h2{
+    background-image: linear-gradient(45deg, tomato, crimson);
+    background-size: 10%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    font-size: 1.8em;
+    font-weight: 800;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+}
+.produit-text p{
+    font-weight: 600;
+    color: rgba(0,0,0,0.6);
+    margin-bottom: 5px;
+}
+.produit-text p span{
+    color: crimson;
+    width: 100px;
+}
+.produit-text form{
+    margin-top: 25px;
+}
+.produit-text button{
+    padding: 10px 15px;
+    margin-top: 10px;
+    border: none;
+    width: 100px;
+    position: relative;
+    color: white;
+    background: var(--color);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.5s;
+}
+.produit-text button:hover{
+    background: transparent;
+    transition: background-color 0.5s;
+}
+.produit-text button::before{
+    position: absolute;
+    content: '';
+    top: -3px;
+    left: -3px;
+    background: linear-gradient(45deg, tomato, crimson);
+    height: calc(100% + 6px);
+    width: calc(100% + 6px);
+    z-index: -1;
+    border-radius: 4px;
+}
+.produit-extend{
+    padding: 0px 80px;
+    overflow: hidden;
+    max-height: 0px;
+    transition: max-height 0.5s;
+}
+.produit-extend h2{
+    background-image: linear-gradient(45deg, tomato, crimson);
+    background-size: 10%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    font-size: 1.8em;
+    font-weight: 800;
+    letter-spacing: 2px;
+    margin: 20px 0;
+}
+.produit-extend  p ~ div{
+    height: 5px;
+    background: linear-gradient(45deg, tomato, crimson);
+    margin-bottom: 10px;
+    width: 250px;
+}
+
+.produit-extend > p, .produit-extend p ~ div{
+    margin-left: 20px;
+}
+.produit-extend  p {
+    font-weight: 600;
+    color: rgba(0,0,0,0.6);
+    margin-bottom: 5px;
+}
+
+#card-container{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    background: transparent !important;
+
+}
+.cardMaxHeight{
+    max-height: 2000px;
+    transition: max-height 0.5s;
+}
+.card{
+    width: auto;
+    margin: 20px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+    padding: 20px 10px;
+    box-shadow: 0.2em 0.2em 0.2em rgba(0,0,0,0.6),
+                -0.05em -0.05em 0.2em rgba(0,0,0,0.3);
+}
+.card > ion-icon{
+    color: tomato;
+    font-size: 2em;
+    margin: 20px 0;
+}
+.card div ion-icon{
+    color: crimson;
+}
+.card p {
+    margin: 30px 40px;
+}
+.produit-extend-form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+.produit-extend-form input[type='submit']{
+    padding: 25px 35px;
+    border: none;
+    color: white;
+    background: var(--color);
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.2em;
+    transition: all 0.5s;
+}
+.produit-extend-form input[type='submit']:hover{
+    background: crimson;
+    transition: all 0.5s;
+}
+.flex-row{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+@media (max-width: 1000px){
+    .produit{
+        display: flex;
+        flex-direction: column;
+    }
+    .produit-text{
+        margin-left: 0;
+        margin-top: 20px;
+    }
+    .produit-extend h2{
+        font-size: 0.9em;
+    }
+    .produit-extend-form{
+        align-items: flex-start;
+    }
+    .produit-extend input[type='submit']{
+        padding: 5px 10px;
+    }
+    #card-container{
+        flex-direction: column;
+    }
+}
+@media (max-width: 750px){
+    body{
+        font-size: 0.9em;
+    }
+    .produit{
+        padding-left: 35px;
+        padding-right: 35px;
+    }
+    .flex-row{
+        margin-top: 30px;
+        position: relative;
+    }
+    .produit-extend{
+        padding-left: 35px;
+        padding-right: 35px;
+    }
+    .produit-extend-form{
+        position: absolute;
+        top: -30px;
+        left: 0;
+    }
+}

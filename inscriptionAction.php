@@ -9,10 +9,18 @@
         $donnee = htmlspecialchars($donnee);
         return $donnee;
     }
+    function check_specialChar($donnee){
+        $regex = '/[^a-zA-Z0-9_]/';
+        if(preg_match($regex,$donnee)){
+            header('Location: index.php?ErreurPseudoSpecialChar=full');
+            exit;
+        }
+    }
+    check_specialChar($_POST['pseudoInscription']);
     $pseudo = validate_donnees($_POST['pseudoInscription']);
     $email = validate_donnees($_POST['emailInscription']);
     $mdp = validate_donnees($_POST['mdpInscription']);
-    
+    var_dump($pseudo);
     if(
     isset($pseudo) 
     && isset($email) 
@@ -21,7 +29,7 @@
     && !empty($pseudo)
     && !empty($mdp)
     && filter_var($email, FILTER_VALIDATE_EMAIL)
-    && strlen($pseudo) <= 20
+    && strlen($pseudo) <= 40
     && strlen($email) <= 20
     && strlen($mdp) <= 20
     ){
@@ -38,10 +46,8 @@
         $userRequette = $db->prepare($requete);
         $userRequette -> execute();
         $usersSaved = $userRequette -> fetchAll();
-        var_dump("hello");
-        echo "1";
+
         foreach($usersSaved as $userSaved):
-            echo "2";
             if($userSaved['pseudo'] == $pseudo):
                 $messageErreurPseudo = $pseudo;
                 header('Location: index.php?ErreurPseudo=' . $messageErreurPseudo);
@@ -68,7 +74,7 @@
         header('Location: index.php?Validité=' . $pseudo);
         exit;
     } else {
-        echo "erreur";
+        echo "erreur inscription";
     }
 
 

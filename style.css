@@ -35,8 +35,80 @@ header a{
     padding: 10px 20px;
 }
 .container-sign{
-    margin-right: 20px;
+    position: relative;
+    padding-right: 20px;
     z-index: 1;
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+.container-sign #setting{
+    margin-left: 20px;
+    font-size: 1.2em;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.7s;
+}
+.container-sign #setting:hover{
+    transform: scale(1.2);
+    transition: transform 0.7s;
+}
+.container-sign h4{
+    color: white;
+}
+.container-sign h4 span{
+    color: tomato;
+}
+.container-sign #menu{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    background: var(--color);
+    width: 110%;
+    top: 105%;
+    right: 0;
+    gap: 10px;
+    border-radius: 0 0 5px 5px;
+    overflow: hidden;
+    max-height: 0px;
+    transition: max-height 0.6s;
+}
+.settingHeight{
+    max-height: 500px !important;
+    transition: max-height 0.6s;
+}
+.container-sign #menu ion-icon{
+    margin-right: 10px;
+    font-size: 1.1em;
+}
+#cache{
+    display: none;
+}
+.container-sign #menu form{
+    display: flex;
+    align-items: center;
+    transition: all 0.5s;
+    color: white;
+    margin-left: 20px;
+}
+.container-sign #menu form:nth-child(1){
+    margin-top: 20px;
+}
+.container-sign #menu form:nth-child(2){
+    margin-bottom: 20px;
+}
+.container-sign #menu form input{
+    background: transparent;
+    border: none;
+    color: rgb(248, 248, 248);
+    font-size: 1.1em;
+    transition: all 0.5s;
+    cursor: pointer;
+}
+.container-sign #menu form:hover input{
+    letter-spacing: 1px;
+    color: tomato;
+    transition: all 0.5s;
 }
 #inscription, #connexion{
     position: relative;
@@ -44,6 +116,11 @@ header a{
     padding: 10px 15px;
     background: var(--color);
     border-radius: 3px;
+    transition: background-color 0.5s;
+}
+#inscription:hover, #connexion:hover{
+    background: transparent;
+    transition: background-color 0.5s;
 }
 #inscription::before, #connexion::before{
     position: absolute;
@@ -158,10 +235,16 @@ header a{
 .container-form form > div input{
     background-color: rgba(255, 255, 255, 0.8);
     transition: all 0.7s;
+    color: rgb(2, 2, 2);
 }
 .container-form form > div:hover input{
     border: solid transparent 2px;
     background-color: tomato;
+    color: rgb(255, 255, 255);
+    transition: all 0.7s;
+}
+.container-form form > div:hover input::placeholder{
+    color: white;
     transition: all 0.7s;
 }
 .container-form form > div:hover label{
@@ -384,5 +467,57 @@ footer ion-icon:hover{
     .msgErreur{
         width: 100%;
         height: 50%;
+    }
+    header{
+        position: fixed;
+        left: 0;
+        top: 0;
+        flex-direction: column;
+        justify-content: flex-start;
+        width: 150px;
+        height: 100vh;
+        z-index: 1;
+        gap: 20px;
+        transform: translateX(-150px);
+        transition: transform 0.5s;
+    }
+    ul{
+        margin-top: 150px;
+        flex-direction: column;
+        height: auto;
+    }
+    ul li{
+        margin: 20px 0;
+    }
+    .container-sign{
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+        height: 150px;
+        margin: 20px 0;
+        padding-right: 0;
+    }
+    .logo{
+        position: absolute;
+        top: 10px;
+        left: 180px;
+        transition: transform 0.5s;
+        background: var(--color);
+        border-radius: 50%;
+    }
+    .lionRotation{
+        transform: translateX(-150px) rotateZ(-360deg);
+        transition: transform 0.5s;
+    }
+    .headerWidth{
+        transform: translateX(0px);
+        transition: transform 0.5s;
+    }
+    .container-form form {
+        width: 90%;
+        padding: 0;
+    }
+    .container-form form input[type='submit']{
+        width: 40%;
     }
 }
